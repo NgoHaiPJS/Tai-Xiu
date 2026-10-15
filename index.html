@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10152a">
+  <meta name="description" content="Tài Xỉu giải trí với VND ảo. Không thanh toán, không dùng tiền thật.">
+  <title>Tài Xỉu | Sảnh Trò Chơi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="lobby-sidebar" aria-label="Điều hướng sảnh trò chơi">
+      <a class="sidebar-brand" href="#home" aria-label="Về sảnh trò chơi">
+        <span class="sidebar-brand-mark" aria-hidden="true"><span class="brand-crown">♛</span><span class="brand-die">⚄</span></span>
+        <span class="sidebar-brand-name">TÀI XỈU<span class="sidebar-brand-accent">ONLINE</span></span>
+      </a>
+      <div class="sidebar-section-label">SẢNH TRÒ CHƠI</div>
+      <nav class="sidebar-nav" aria-label="Các khu vực">
+        <a class="sidebar-link" href="#home"><span aria-hidden="true">⌂</span> Tổng quan</a>
+        <a class="sidebar-link is-current" href="#game" aria-current="page"><span aria-hidden="true">⚄</span> Tài Xỉu</a>
+        <a class="sidebar-link" href="#history"><span aria-hidden="true">◷</span> Ván gần đây</a>
+        <a class="sidebar-link" href="#ratings"><span aria-hidden="true">☆</span> Đánh giá</a>
+      </nav>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-label">TÀI KHOẢN</div>
+      <div class="sidebar-status"><span class="live-dot"></span><span>Chơi thử miễn phí</span></div>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-disclaimer"><span aria-hidden="true">ⓘ</span> VND ảo trong trò chơi.<br>Không có giao dịch thật.</div>
+    </aside>
+
+    <header class="topbar">
+      <nav class="lobby-tabs" aria-label="Danh mục">
+        <a class="lobby-tab is-active" href="#game">Casino</a>
+        <a class="lobby-tab" href="#ratings">Đánh giá</a>
+      </nav>
+      <div class="topbar-right">
+        <span class="play-label"><span class="live-dot"></span> VND</span>
+        <button class="profile-button" type="button" aria-label="Người chơi khách">
+          <span class="profile-avatar">K</span><span class="profile-name">Khách</span><span class="profile-chevron" aria-hidden="true">⌄</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="welcome-row" aria-label="Số dư VND ảo của bạn">
+        <div class="welcome-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> GÓC MAY MẮN CỦA BẠN</p>
+          <h1>Hôm nay,<br><span>vận may mỉm cười!</span></h1>
+          <p class="welcome-note">Lắc xúc xắc, thử vận may!</p>
+        </div>
+        <div class="wallet-panel">
+          <div class="wallet-topline"><span class="wallet-label">VÍ CỦA BẠN</span><span class="coin-icon" aria-hidden="true">★</span></div>
+          <div class="wallet-value" id="balance" aria-live="polite">1,000,000</div>
+          <div class="wallet-foot"><span class="wallet-currency">VND</span><span class="welcome-badge" id="welcomeBadge">QUÀ TÂN THỦ <span aria-hidden="true">✳</span></span></div>
+          <button class="wallet-topup" id="openTopup" type="button"><span aria-hidden="true">＋</span> NẠP XU</button>
+        </div>
+      </section>
+
+      <section class="game-layout" id="game" aria-label="Tài Xỉu">
+        <div class="game-column">
+        <div class="table-panel">
+          <div class="table-heading">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span> BÀN CƯỢC</p><h2>Tài Hay Xỉu?<span class="heading-period">!</span></h2></div>
+            <div class="round-tag"><span class="round-spark" aria-hidden="true">✳</span> VÁN <span id="roundNumber">001</span></div>
+          </div>
+
+          <div class="felt-stage" id="feltStage">
+            <div class="stage-topline"><span>CHỌN CƯỢC</span><span class="table-emblem" aria-hidden="true">★</span><span>LẮC BA XÚC XẮC</span></div>
+            <div class="bet-options" role="group" aria-label="Chọn cửa cược">
+              <button class="bet-option xiu-option" type="button" data-side="xiu" aria-pressed="false">
+                <span class="bet-side">XỈU</span><span class="bet-range">4 — 10</span><span class="bet-caption">TỔNG THẤP</span>
+              </button>
+              <div class="versus" aria-hidden="true">HAY</div>
+              <button class="bet-option tai-option" type="button" data-side="tai" aria-pressed="false">
+                <span class="bet-side">TÀI</span><span class="bet-range">11 — 17</span><span class="bet-caption">TỔNG CAO</span>
+              </button>
+            </div>
+            <div class="dice-tray" aria-label="Ba viên xúc xắc">
+              <div class="die" id="die0" aria-label="Xúc xắc 1: chưa lắc"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+              <div class="die" id="die1" aria-label="Xúc xắc 2: chưa lắc"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+              <div class="die" id="die2" aria-label="Xúc xắc 3: chưa lắc"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+            </div>
+            <div class="result-line" id="resultLine" aria-live="polite"><span class="result-dash"></span> ĐẾN LƯỢT BẠN LẮC! <span class="result-dash"></span></div>
+            <div class="felt-grain" aria-hidden="true"></div>
+          </div>
+
+          <div class="wager-row">
+            <div class="wager-label-group"><label for="wagerInput">MỨC CƯỢC</label><span class="wager-hint">VND muốn cược</span></div>
+            <div class="wager-control">
+              <button class="stepper-button" type="button" id="decreaseWager" aria-label="Giảm mức cược">−</button>
+              <input id="wagerInput" type="number" min="100" step="100" value="10000" inputmode="numeric" aria-label="Số VND ảo muốn cược">
+              <button class="stepper-button" type="button" id="increaseWager" aria-label="Tăng mức cược">+</button>
+            </div>
+            <div class="quick-bets" aria-label="Mức cược nhanh">
+              <button type="button" data-wager="1000">1.000</button><button type="button" data-wager="10000" class="quick-active">10.000</button><button type="button" data-wager="50000">50.000</button><button type="button" data-wager="100000">100.000</button>
+            </div>
+          </div>
+          <div class="play-row">
+            <p class="payout-copy"><span class="payout-star" aria-hidden="true">$</span> Thắng nhận <strong>1,95×</strong> mức cược</p>
+            <button class="sound-toggle" id="soundToggle" type="button" aria-label="Tắt âm thanh xúc xắc" aria-pressed="true" title="Bật hoặc tắt âm thanh xúc xắc"><span aria-hidden="true">♫</span><span class="sound-label">ÂM THANH BẬT</span></button>
+            <button class="roll-button" id="rollButton" type="button"><span class="roll-button-icon" aria-hidden="true">↗</span><span>LẮC XÚC XẮC</span></button>
+          </div>
+          <p class="table-footnote"><span aria-hidden="true">✳</span> Thắng làm vua, thua thì ngu</p>
+        </div>
+
+          <section class="side-card ratings-card" id="ratings" aria-labelledby="ratingsTitle">
+            <div class="ratings-heading">
+              <div><p class="eyebrow">ĐMM ĐẲNG CẤP VL</p><h2 id="ratingsTitle">Đánh giá</h2></div>
+              <div class="overall-rating" aria-label="Điểm tổng thể minh họa 4,36 trên 5 sao">
+                <strong>4,36</strong><span class="rating-stars" aria-hidden="true"><span>★★★★★</span><span class="partial-stars">★★★★★</span></span><small>/ 5 sao</small>
+              </div>
+            </div>
+            <div class="sample-reviews" id="sampleReviews">
+              <article class="sample-review" data-review="one">
+                <div class="sample-avatar" aria-hidden="true"><span></span></div>
+                <div class="sample-review-body">
+                  <div class="sample-review-meta"><strong>Trùm Tài Xỉu 🤑</strong><span class="sample-badge"></span></div>
+                  <div class="sample-review-stars" aria-label="5 trên 5 sao">★★★★★</div>
+                  <p class="sample-review-text">Tôi đã thắng 36 tỉ!!!</p>
+                </div>
+              </article>
+              <article class="sample-review" data-review="two">
+                <div class="sample-avatar" aria-hidden="true"><span></span></div>
+                <div class="sample-review-body">
+                  <div class="sample-review-meta"><strong>Chàng trai mang thai trên gác mái</strong><span class="sample-badge"></span></div>
+                  <div class="sample-review-stars" aria-label="4 trên 5 sao">★★★★☆</div>
+                  <p class="sample-review-text">Game đã làm tôi có bầu, 4/5 sao vì hồi chiều trời mưa</p>
+                </div>
+              </article>
+              <article class="sample-review" data-review="three">
+                <div class="sample-avatar" aria-hidden="true"><span></span></div>
+                <div class="sample-review-body">
+                  <div class="sample-review-meta"><strong>Fan MCK, JACK, MU, TG, T1</strong><span class="sample-badge"></span></div>
+                  <div class="sample-review-stars" aria-label="4 trên 5 sao">★★★★☆</div>
+                  <p class="sample-review-text">Game như dái vì không có idol của tôi. Nhưng được 4 sao vì nhờ chơi game mà tôi có thể cầm lightstick tinh tú đi xe lăn từ trong hang ra ngoài trời mưa farm aura với cái khái dô</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+        </div>
+
+        <aside class="side-column">
+          <section class="side-card streak-card stats-card" aria-labelledby="streakTitle">
+            <div class="side-card-head"><div><p class="eyebrow">THÀNH TÍCH</p><h3 id="streakTitle">Bạn chơi thế nào rồi?</h3></div><span class="scorecard-icon" aria-hidden="true">✳</span></div>
+            <div class="stats-grid">
+              <div class="stat-cell"><span class="stat-label">VÁN ĐÃ CHƠI</span><strong id="roundsPlayed">0</strong></div>
+              <div class="stat-cell"><span class="stat-label">VÁN THẮNG</span><strong id="roundsWon">0</strong></div>
+              <div class="stat-cell"><span class="stat-label">TỈ LỆ THẮNG</span><strong id="winRate">—</strong></div>
+              <div class="stat-cell"><span class="stat-label">ĐIỂM CAO NHẤT</span><strong id="bestRoll">—</strong></div>
+            </div>
+            <div class="streak-foot"><span class="streak-flower" aria-hidden="true">✿</span><span id="streakMessage">Vận may đầu tiên đang chờ bạn!</span></div>
+          </section>
+
+          <section class="side-card history-card" id="history" aria-labelledby="historyTitle">
+            <div class="side-card-head history-head"><div><p class="eyebrow">NHỮNG LẦN ĐỔ XÚC XẮC</p><h3 id="historyTitle">Ván gần đây</h3></div><button class="text-button" id="clearHistory" type="button" title="Xóa lịch sử đã lưu">XÓA</button></div>
+            <div class="history-list" id="historyList" aria-live="polite"><div class="empty-history"><span class="empty-dice" aria-hidden="true">⚄</span><span>Chuyện vui bắt đầu từ một lần lắc!</span></div></div>
+            <div class="history-footer"><span>LƯU TRÊN THIẾT BỊ NÀY</span><span class="saved-indicator"><span class="live-dot"></span> ĐÃ LƯU</span></div>
+          </section>
+
+        </aside>
+      </section>
+      <footer class="page-footer"><span>TÀI XỈU <span class="footer-dot">·</span> CHƠI VUI MỖI NGÀY</span><span>VND ẢO, KHÔNG CÓ GIÁ TRỊ THANH TOÁN</span></footer>
+    </main>
+    <div class="result-modal" id="resultModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <section class="result-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalMessage" tabindex="-1">
+        <button class="modal-close" id="closeModal" type="button" aria-label="Đóng kết quả">×</button>
+        <div class="confetti-rain" id="confettiRain" aria-hidden="true"></div>
+        <div class="modal-character" id="modalCharacter" aria-hidden="true">🎉</div>
+        <p class="modal-eyebrow" id="modalEyebrow">VẬN MAY GÕ CỬA</p>
+        <h2 id="modalTitle">Tuyệt quá!</h2>
+        <p class="modal-message" id="modalMessage">Bạn thắng rồi!</p>
+        <div class="modal-summary"><span class="modal-dice" id="modalDice">2 · 4 · 5</span><span class="modal-total" id="modalTotal">Tổng 11</span><strong class="modal-coins" id="modalCoins">+9.500 VND ảo</strong></div>
+        <button class="modal-continue" id="continueButton" type="button">Chơi tiếp nào!</button>
+      </section>
+    </div>
+    <div class="topup-modal" id="topupModal" aria-hidden="true">
+      <div class="topup-backdrop" data-close-topup></div>
+      <section class="topup-dialog" role="dialog" aria-modal="true" aria-labelledby="topupTitle" tabindex="-1">
+        <button class="topup-close" id="closeTopup" type="button" aria-label="Đóng ví VND ảo">×</button>
+        <div class="topup-mark" aria-hidden="true">₫</div>
+        <p class="eyebrow">VÍ VND</p>
+        <h2 id="topupTitle">Bổ sung số dư</h2>
+        <p class="topup-disclosure">VND miễn phí để chơi thử. Không thanh toán, không cần thông tin cá nhân.</p>
+        <div class="topup-plans" id="topupPlans" aria-label="Chọn gói VND ảo">
+          <button class="topup-plan" type="button" data-plan="500000"><span class="plan-coins">500.000 ₫</span><span class="plan-label">GÓI NHỎ</span><span class="plan-price">MIỄN PHÍ</span></button>
+          <button class="topup-plan" type="button" data-plan="2000000"><span class="plan-coins">2.000.000 ₫</span><span class="plan-label">GÓI VUI</span><span class="plan-price">MIỄN PHÍ</span></button>
+          <button class="topup-plan" type="button" data-plan="5000000"><span class="plan-coins">5.000.000 ₫</span><span class="plan-label">GÓI MAY MẮN</span><span class="plan-price">MIỄN PHÍ</span></button>
+          <button class="topup-plan" type="button" data-plan="10000000"><span class="plan-coins">10.000.000 ₫</span><span class="plan-label">GÓI RỦNG RỈNH</span><span class="plan-price">MIỄN PHÍ</span></button>
+        </div>
+        <div class="topup-checkout" id="topupCheckout" hidden>
+          <button class="topup-back" id="backToPlans" type="button">← Đổi gói</button>
+          <div class="checkout-summary"><span>Gói đã chọn</span><strong id="checkoutPackage">2.000.000 VND</strong></div>
+          <div class="checkout-summary"><span>Thanh toán</span><strong>0 VND · MIỄN PHÍ</strong></div>
+          <p class="checkout-note">Đây chỉ là lượt nhận VND ảo mô phỏng. Không tạo giao dịch hay thu thập thông tin.</p>
+          <button class="claim-coins" id="claimCoins" type="button">NHẬN VND MIỄN PHÍ <span aria-hidden="true">↗</span></button>
+        </div>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+</body>
+</html>
